@@ -32,7 +32,7 @@ interface UploadFileProps {
  interface RenameFileProps {
   fileId: string;
   name: string;
-  extension: string;
+  extenstion: string;
   path: string;
 }
  interface UpdateFileUsersProps {
@@ -42,7 +42,7 @@ interface UploadFileProps {
 }
  interface DeleteFileProps {
   fileId: string;
-  bucketFileId: string;
+  bucketFileld: string;
   path: string;
 }
 
@@ -159,13 +159,13 @@ export const getFiles = async ({
 export const renameFile = async ({
   fileId,
   name,
-  extension,
+  extenstion,
   path,
 }: RenameFileProps) => {
   const { databases } = await createAdminClient();
 
   try {
-    const newName = `${name}.${extension}`;
+    const newName = `${name}.${extenstion}`;
     const updatedFile = await databases.updateDocument(
       appwriteConfig.databaseId,
       appwriteConfig.filesCollectionId,
@@ -208,7 +208,7 @@ export const updateFileUsers = async ({
 
 export const deleteFile = async ({
   fileId,
-  bucketFileId,
+  bucketFileld,
   path,
 }: DeleteFileProps) => {
   const { databases, storage } = await createAdminClient();
@@ -221,7 +221,7 @@ export const deleteFile = async ({
     );
 
     if (deletedFile) {
-      await storage.deleteFile(appwriteConfig.bucketId, bucketFileId);
+      await storage.deleteFile(appwriteConfig.bucketId, bucketFileld);
     }
 
     revalidatePath(path);

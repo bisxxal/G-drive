@@ -92,7 +92,7 @@ const AuthForm = ({type}:{type:'signin'|'signup'}) => {
       </Button>
       <div>
         {type === 'signin' ? (
-        <p>Don't have an account? <Link href="/sign-up" className="text-[#4bf378]">Sign-up</Link></p>
+        <p>Don &apos; t have an account? <Link href="/sign-up" className="text-[#4bf378]">Sign-up</Link></p>
         ):(<p>Already have an account? <Link href="/sign-in" className="text-[#4bf378]">Sign-in</Link></p>)}
       </div>
       {error && <p className="text-red-500">{error}</p>}

@@ -73,12 +73,12 @@ const OtpModal = ({
         <div className="w-full justify-center flex ">
         <InputOTP maxLength={6} value={password} onChange={setPassword}>
           <InputOTPGroup className="flex gap-4 !border-none ">
-            <InputOTPSlot index={0} className="!border-2 border-[#ffffff4a] bg-[#1a1a1a34]" />
-            <InputOTPSlot index={1} className="!border-2 border-[#ffffff4a] bg-[#1a1a1a34]" />
-            <InputOTPSlot index={2} className="!border-2 border-[#ffffff4a] bg-[#1a1a1a34]" />
-            <InputOTPSlot index={3} className="!border-2 border-[#ffffff4a] bg-[#1a1a1a34]" />
-            <InputOTPSlot index={4} className="!border-2 border-[#ffffff4a] bg-[#1a1a1a34]" />
-            <InputOTPSlot index={5} className="!border-2 border-[#ffffff4a] bg-[#1a1a1a34]" />
+            <InputOTPSlot index={0} className="!border-2 border-[#ffffff4a] brand font-bold text-xl bg-[#1a1a1a34]" />
+            <InputOTPSlot index={1} className="!border-2 border-[#ffffff4a] brand font-bold text-xl bg-[#1a1a1a34]" />
+            <InputOTPSlot index={2} className="!border-2 border-[#ffffff4a] brand font-bold text-xl bg-[#1a1a1a34]" />
+            <InputOTPSlot index={3} className="!border-2 border-[#ffffff4a] brand font-bold text-xl bg-[#1a1a1a34]" />
+            <InputOTPSlot index={4} className="!border-2 border-[#ffffff4a] brand font-bold text-xl bg-[#1a1a1a34]" />
+            <InputOTPSlot index={5} className="!border-2 border-[#ffffff4a] brand font-bold text-xl bg-[#1a1a1a34]" />
           </InputOTPGroup>
         </InputOTP>
 
@@ -87,7 +87,7 @@ const OtpModal = ({
           <div className="flex w-full flex-col gap-4">
             <AlertDialogAction
               onClick={handleSubmit}
-              className="bg-[#4bf378] h-12"
+              className="bg-[#4bf378] hover:bg-[#25a346] h-12"
               type="button"
             >
               Submit

@@ -1,4 +1,4 @@
-// /* eslint-disable no-unused-vars */
+
 import React from "react";
 import { Models } from "node-appwrite";
 import { getFileTypesParams } from "@/lib/utils";
@@ -10,7 +10,7 @@ import Card from "@/components/custom/Card";
 type FileType = | "image" | "document"| "video" | "audio" | "other";
 
   interface SearchParamProps {
-    params?: Promise<SegmentParams>;
+    params?: Promise<{ id: string }>;
     searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
   }
 const SinglePage = async ({ searchParams, params }: SearchParamProps) => {
@@ -22,22 +22,19 @@ const SinglePage = async ({ searchParams, params }: SearchParamProps) => {
   const types = getFileTypesParams(type) as FileType[];
   const files = await getFiles({ types, searchText, sort });
 
-  // console.log(files);
-  
  
   return (
-    <div className="  w-full h-full">
-      <section className="w-full">
-        <h1 className="">{type}</h1>
+    <div className=" relative w-full h-full">
+      <section className="w-full px-4 mt-5">
+        <h1 className=" text-4xl mb-4 capitalize font-bold ">{type}</h1>
 
-        <div className="total-size-section">
+        <div className=" flex justify-between ">
           <p className="body-1">
             Total: <span className="h5">0 MB</span>
           </p>
 
           <div className="sort-container">
-            <p className="body-1 hidden text-light-200 sm:block">Sort by:</p>
-
+            
             <Sort />
           </div>
         </div>

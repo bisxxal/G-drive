@@ -17,7 +17,7 @@ const Header = ({
   // console.log("Header", userId , accountId);
   
   return (
-    <header className="flex seccol py-4 px-3 w-full max-md:hidden justify-between">
+    <header className="flex seccol relative z-[100px] py-4 px-3 w-full max-md:hidden justify-between">
     <Search />
     <div className="flex gap-4 ">
       <FileUploader ownerId={userId} accountId={accountId} />

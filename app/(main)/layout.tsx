@@ -12,7 +12,7 @@ const Mainlayout = async ({children}:{children:React.ReactNode}) => {
     <main className='w-full  flex h-screen relative text-gray-200 '>
       <Sidebar {...currentUser}/>
 
-      <section className=' flex flex-1 fixed w-[85%] right-0 flex-col'>
+      <section className=' flex flex-1 fixed max-md:w-full w-[85%] right-0 flex-col'>
         <MobileNav {...currentUser}/> 
         <Header  userId={currentUser.$id} accountId={currentUser.accountId} />
       </section>

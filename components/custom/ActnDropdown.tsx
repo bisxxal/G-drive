@@ -76,11 +76,9 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
     let success = false;
 
     const actions = {
-      rename: () =>
-        renameFile({ fileId: file.$id, name, extension: file.extension, path }),
+      rename: () =>renameFile({ fileId: file.$id, name, extenstion: file.extenstion, path }),  
       share: () => updateFileUsers({ fileId: file.$id, emails, path }),
-      delete: () =>
-        deleteFile({ fileId: file.$id, bucketFileId: file.bucketFileId, path }),
+      delete: () =>deleteFile({ fileId: file.$id, bucketFileld: file.bucketFileld, path }),
     };
 
     success = await actions[action.value as keyof typeof actions]();
@@ -109,11 +107,12 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
     const { value, label } = action;
 
     return (
-      <DialogContent className=" backdrop-blur-md bg-[#ffffff18] inshadow border-2 border-[#ffffff25] !text-white button">
+      <DialogContent className=" backdrop-blur-md bg-[#ffffff18] px-7 inshadow border-2 border-[#ffffff25] !text-white button">
         <DialogHeader className="flex flex-col gap-3">
           <DialogTitle className="text-center text-light-100">
             {label}
           </DialogTitle>
+
           {value === "rename" && (
             <Input
               type="text"
@@ -131,17 +130,17 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
           )}
           {value === "delete" && (
             <p className="delete-confirmation">
-              Are you sure you want to delete 
-              <h2 className="delete-file-name">{file.name}</h2>?
+              Are you sure you want to delete  
+              <span className="brand"> {" "}{file.name}  {" "} </span>?
             </p>
           )}
         </DialogHeader>
         {["rename", "delete", "share"].includes(value) && (
           <DialogFooter className="flex flex-col gap-3 md:flex-row">
-            <Button onClick={closeAllModals} className="modal-cancel-button">
+            <Button onClick={closeAllModals} className=" bg-red-500 hover:bg-red-600 ">
               Cancel
             </Button>
-            <Button onClick={handleAction} className="modal-submit-button">
+            <Button onClick={handleAction} className=" bg-blue-500 hover:bg-blue-600 ">
               <p className="capitalize">{value}</p>
               {isLoading && (
                 <PiSpinner className="animate-spin text-white" />
@@ -159,7 +158,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
         <DropdownMenuTrigger className=" !rounded-xl !bg-[#00000049] p-1 px-[1px]">
         <HiOutlineDotsVertical className=" text-2xl" />
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="  text-white seccol border-2 rounded-3xl border-[#ffffff26]">
+        <DropdownMenuContent className="  text-white seccol !w-52 border-2 rounded-3xl border-[#ffffff26]">
           <DropdownMenuLabel className="max-w-[200px]  ">
             {file.name}
           </DropdownMenuLabel>
@@ -173,13 +172,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
 
                 if (
                   ["rename", "share", "delete", "details"].includes(
-                    actionItem.value,
-                  )
-                ) {
-                  setIsModalOpen(true);
-                }
-              }}
-            >
+                    actionItem.value,)  ) {  setIsModalOpen(true); }}} >
               {actionItem.value === "download" ? (
                 <Link
                   href={constructDownloadUrl(file.bucketFileld)}
